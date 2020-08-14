@@ -1,0 +1,37 @@
+{
+  "name": "Save to Google Contacts",
+  "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAku6bpzxXjrjnFMsoltjR\nMAXZLOqRgxrG/5hRq0hbe3Gc2L4eJnWdLLMr6zwQb4DXFuYfsrTaevI0VVGgOe2s\nCmN6pMxplp9qnR1vj59g9omPK2R0VBQgGEyWAp1r/iDx2NBZcUUB6yfhxC9T/nJ1\nqnq4jMFhv4skeoQB+i6sq5zV7G4pLp+urameXXqAbqbyX8dnia4z3O9kYQFpyplL\nee4yN7LqQDcVGlSThhJKgV9TX1QfIv1kDsoTDgrrJMpodiDsEFIfD3hu+Ettjr8x\n17CQmDM14kzz1jS8tVy6HDz/c8ekL1A8ouR/3sxKYwf83lgNu+uPVNChPHatR4ik\nVwIDAQAB\n-----END PUBLIC KEY-----\n",
+  "oauth2": {
+    "client_id": "270968660643-4bts5g2ugouo87vghnrumuko4dio4vc3.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/contacts"]
+  },
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "A chrome extension that lets you directly save contacts in phone from web pages",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["background.bundle.js"]
+  },
+  "permissions": ["storage", "tabs", "webNavigation", "<all_urls>", "identity"],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "Save to Google Contacts",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.bundle.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "web_accessible_resources": ["images/*.png"]
+}
