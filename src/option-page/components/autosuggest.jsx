@@ -8,8 +8,8 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
-import JsonData from "../../src/utils/countryCodes";
-import Db from "../../src/utils/db";
+import JsonData from "../../utils/countryCodes";
+import Db from "../../utils/db";
 
 const suggestions = JsonData.countryCodes;
 const db = new Db();

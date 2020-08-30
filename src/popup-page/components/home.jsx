@@ -6,7 +6,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import LinearProgress from "./linearProgress";
-import Db from "../../src/utils/db";
+import Db from "../../utils/db";
 
 const db = new Db();
 

@@ -4,9 +4,9 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: {
     background: "./src/background.js",
-    option: "./option-page/App.jsx",
-    popup: "./popup-page/App.jsx",
-    content_script: "./content-scripts/App.jsx"
+    option: "./src/option-page/App.jsx",
+    popup: "./src/popup-page/App.jsx",
+    content_script: "./src/content-scripts/App.jsx"
   },
   module: {
     rules: [
@@ -37,6 +37,7 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".css", ".json"]
   },
+  devtool: "inline-sourcemap",
   output: {
     path: __dirname + "/dist",
     publicPath: "/",
@@ -45,8 +46,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin(
       [
-        { from: "./option-page/option.html", force: true },
-        { from: "./popup-page/popup.html", force: true },
+        { from: "./src/option-page/option.html", force: true },
+        { from: "./src/popup-page/popup.html", force: true },
         { from: "./src/app/", force: true }
       ],
       {}

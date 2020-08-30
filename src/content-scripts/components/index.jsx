@@ -7,9 +7,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Form from "./form";
 import Button from "@material-ui/core/Button";
 import Loader from "./loader";
-import Parser from "../../src/utils/parser";
+import Parser from "../../utils/parser";
 import placeRightBelow from "./placeRightBelow";
-
+import "./index.css";
+import "../../custom-elements/index";
 const parser = new Parser();
 
 export default class Index extends React.Component {
@@ -133,21 +134,7 @@ export default class Index extends React.Component {
           onTextSelect={this.onTextSelect}
           onTextUnselect={() => this.setState({ isOpen: false })}
         >
-          <button
-            id="btn"
-            style={{
-              backgroundColor: "cornflowerblue",
-              border: "1px solid black",
-              pointerEvents: "auto",
-              width: "20px",
-              height: "20px",
-              padding: "0px",
-              textAlign: "center"
-            }}
-            onClick={this.handleClick}
-          >
-            +
-          </button>
+          <popover-button onClick={this.handleClick}></popover-button>
         </Popover>
         <Dialog
           style={{ zIndex: 2147483647 }}
