@@ -20,6 +20,10 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
+        test: /\.iframe.css$/,
+        use: [{ loader: "file-loader" }, { loader: "postcss-loader" }]
+      },
+      {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           "file-loader",
