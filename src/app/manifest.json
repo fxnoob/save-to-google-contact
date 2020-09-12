@@ -4,7 +4,7 @@
     "client_id": "270968660643-4bts5g2ugouo87vghnrumuko4dio4vc3.apps.googleusercontent.com",
     "scopes": ["https://www.googleapis.com/auth/contacts"]
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "manifest_version": 2,
   "description": "A chrome extension that lets you directly save contacts in phone from web pages",
   "icons": {
@@ -15,7 +15,7 @@
   "background": {
     "scripts": ["background.bundle.js"]
   },
-  "permissions": ["storage", "tabs", "webNavigation", "<all_urls>", "identity"],
+  "permissions": ["storage", "activeTab", "<all_urls>", "identity"],
   "browser_action": {
     "default_icon": {
       "19": "images/icon-19.png",
