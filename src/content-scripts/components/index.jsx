@@ -4,16 +4,16 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import IFrame from "react-frame-component";
 import IFrameComponent from "./FrameMUI";
 import "./index.css";
 import Form from "./form";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import AddIcCallRoundedIcon from "@material-ui/icons/AddIcCallRounded";
 import Loader from "./loader";
 import Parser from "../../utils/parser";
 import placeRightBelow from "./placeRightBelow";
 import initialContent from "./initialIframeContent";
-import "../../custom-elements/index";
 const parser = new Parser();
 
 export default class Index extends React.Component {
@@ -137,15 +137,21 @@ export default class Index extends React.Component {
           onTextSelect={this.onTextSelect}
           onTextUnselect={() => this.setState({ isOpen: false })}
         >
-          <IFrame
+          <IFrameComponent
             initialContent={initialContent()}
             className="default-iframe"
-            style={{ width: "24px", height: "24px", border: "none" }}
+            style={{ border: "none", height: "50px", width: "50px" }}
           >
-            <button className="glow-on-hover" onClick={this.handleClick}>
-              +
-            </button>
-          </IFrame>
+            <IconButton
+              style={{ background: "#f1f2fa", border: "1px solid black" }}
+              onClick={this.handleClick}
+              color="primary"
+              aria-label="Add contact"
+              component="span"
+            >
+              <AddIcCallRoundedIcon />
+            </IconButton>
+          </IFrameComponent>
         </Popover>
         <Dialog
           style={{ zIndex: 2147483647 }}
