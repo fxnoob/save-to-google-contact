@@ -16,9 +16,9 @@ export default class Loader extends React.Component {
       loaderJson = Done;
     }
     return (
-      <div style={{ width: "300px" }}>
+      <div>
         <Lottie
-          style={{ width: "300px" }}
+          style={{ width: "300px", height: "270px" }}
           options={{
             animationData: loaderJson
           }}
