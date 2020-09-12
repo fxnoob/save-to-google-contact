@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack --watch --progress --colors --config webpack.config.js --mode=development",
-    "build": "webpack -p --mode production",
+    "build": "webpack --progress --colors --config webpack.config.js --mode=production",
     "prettier_check_src": "prettier --check src/**/*.{js,jsx}",
     "prettier_check_popup": "prettier --check src/**/*.{js,jsx}",
     "prettier_check_option": "prettier --check src/**/*.{js,jsx}",

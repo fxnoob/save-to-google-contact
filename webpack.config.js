@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { manifestTransform } = require("./scripts/transform");
 
 module.exports = {
   entry: {
@@ -41,7 +42,6 @@ module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".css", ".json"]
   },
-  devtool: "inline-sourcemap",
   output: {
     path: __dirname + "/dist",
     publicPath: "/",
@@ -56,6 +56,15 @@ module.exports = {
       ],
       {}
     ),
+    new CopyWebpackPlugin([
+      {
+        from: "./src/app/manifest.json",
+        force: true,
+        transform(content, path) {
+          return manifestTransform(content, path, options);
+        }
+      }
+    ]),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
