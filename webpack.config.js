@@ -53,7 +53,7 @@ module.exports = (env, options) => {
       ],
     },
     optimization: {
-      minimize: true || options.mode == "production",
+      minimize: options.mode == "production",
       minimizer: [new ESBuildMinifyPlugin()],
     },
     resolve: {

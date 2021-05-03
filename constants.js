@@ -10,6 +10,7 @@ const constants = {
   },
   support: {
     howToUseVid: "https://www.youtube.com/watch?v=FeFummlSs38",
+    googleFormLink: "https://forms.gle/P5EPJcC2fAWw9gGT6",
   },
 };
 

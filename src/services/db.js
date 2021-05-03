@@ -6,6 +6,8 @@
 class Schema {
   constructor() {
     this.data = {
+      /* is user logged in with gmail */
+      loggedIn: false,
       /*  is this Enabled */
       isExtEnabled: true,
       /* default selected country  */

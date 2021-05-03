@@ -1,4 +1,5 @@
 /* https://developer.chrome.com/apps/tut_oauth*/
+import db from "./db";
 class OAuth {
   constructor() {}
   /* get access token from google oauth*/
@@ -12,6 +13,10 @@ class OAuth {
         reject(e);
       }
     });
+  }
+  async checkPermissions() {
+    const { loggedIn } = await db.get("loggedIn");
+    return loggedIn;
   }
 }
 const oauth = new OAuth();
