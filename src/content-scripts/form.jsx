@@ -47,11 +47,11 @@ class Form extends React.Component {
           value={this.props.lastName}
           label="Last Name"
           InputProps={{
-            startAdornment: (
+            startAdornment: 
               <InputAdornment position="start">
                 <AccountCircle />
               </InputAdornment>
-            ),
+            ,
           }}
         />
         <div className="">
@@ -64,11 +64,11 @@ class Form extends React.Component {
                 label="Phone"
                 value={this.props.phone}
                 InputProps={{
-                  startAdornment: (
+                  startAdornment: 
                     <InputAdornment position="start">
                       <PhoneIcon />
                     </InputAdornment>
-                  ),
+                  ,
                 }}
               />
             </Grid>
@@ -82,11 +82,11 @@ class Form extends React.Component {
                 label="Email"
                 value={this.props.email}
                 InputProps={{
-                  startAdornment: (
+                  startAdornment: 
                     <InputAdornment position="start">
                       <EmailIcon />
                     </InputAdornment>
-                  ),
+                  ,
                 }}
               />
             </Grid>
@@ -100,11 +100,11 @@ class Form extends React.Component {
                 value={this.props.desc}
                 label="Description"
                 InputProps={{
-                  startAdornment: (
+                  startAdornment: 
                     <InputAdornment position="start">
                       <AccountCircle />
                     </InputAdornment>
-                  ),
+                  ,
                 }}
               />
             </Grid>

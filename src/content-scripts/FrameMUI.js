@@ -48,11 +48,11 @@ function FrameComponent(props) {
         {...other}
       >
         <div id="demo-frame-jss" />
-        {state.ready ? (
+        {state.ready ?
           <StylesProvider jss={state.jss} sheetsManager={state.sheetsManager}>
             {children}
           </StylesProvider>
-        ) : null}
+          : null}
       </IFrame>
     </NoSsr>
   );

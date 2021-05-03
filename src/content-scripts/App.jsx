@@ -152,9 +152,9 @@ export default class App extends React.Component {
               {"Google Contact Book"}
             </DialogTitle>
             <DialogContent>
-              {this.state.isLoading ? (
+              {this.state.isLoading ?
                 <Loader for={this.state.LoaderName} />
-              ) : (
+                :
                 <Form
                   firstname={this.state.firstName}
                   lastname={this.state.lastName}
@@ -163,7 +163,7 @@ export default class App extends React.Component {
                   desc={this.state.desc}
                   onChange={this.onFormChange}
                 />
-              )}
+              }
             </DialogContent>
             <DialogActions>
               <Button

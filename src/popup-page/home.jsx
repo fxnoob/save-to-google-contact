@@ -58,9 +58,9 @@ class Home extends React.Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        {this.state.isLoading ? (
+        {this.state.isLoading ?
           <LinearProgress />
-        ) : (
+          :
           <div>
             <FormControlLabel
               control={
@@ -86,7 +86,7 @@ class Home extends React.Component {
               Settings
             </Button>
           </div>
-        )}
+        }
       </React.Fragment>
     );
   }
