@@ -20,7 +20,7 @@ export default ({
   selectionTop,
   selectionLeft,
   /* selectionWidth, */
-  selectionHeight
+  selectionHeight,
 }) => {
   const style = { position: "fixed", zIndex: 2147483646 };
 

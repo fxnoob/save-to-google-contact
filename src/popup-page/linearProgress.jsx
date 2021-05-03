@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 const styles = {
   root: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 };
 
-const LinearQuery = props => {
+const LinearQuery = (props) => {
   const { classes } = props;
   return (
     <div className={classes.root}>

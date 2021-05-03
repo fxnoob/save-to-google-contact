@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
@@ -6,30 +7,27 @@ import SaveIcon from "@material-ui/icons/Save";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import LinearProgress from "./linearProgress";
-import Db from "../../utils/db";
-
-const db = new Db();
-
-const styles = theme => ({
+import db from "../services/db";
+const styles = (theme) => ({
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   leftIcon: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   rightIcon: {
-    marginLeft: theme.spacing.unit
+    marginLeft: theme.spacing.unit,
   },
   iconSmall: {
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });
 
 class Home extends React.Component {
   state = {
     isLoading: true,
     switchStatus: true,
-    ExtStatus: "Disabled"
+    ExtStatus: "Disabled",
   };
   constructor(props) {
     super(props);
@@ -39,9 +37,8 @@ class Home extends React.Component {
     chrome.tabs.create({ url: "/option.html" });
   }
   componentDidMount() {
-    db.get(["isExtEnabled"])
-      .then(res => {
-        console.log(res);
+    db.get("isExtEnabled")
+      .then((res) => {
         if (res.isExtEnabled === true) {
           this.setState({ ExtStatus: "Enabled", switchStatus: true });
         } else {
@@ -49,9 +46,7 @@ class Home extends React.Component {
         }
         this.setState({ isLoading: false });
       })
-      .catch(e => {
-        console.log(e);
-      });
+      .catch(() => {});
   }
   handleSwitch() {
     db.set({ isExtEnabled: !this.state.switchStatus });

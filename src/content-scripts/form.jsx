@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
@@ -10,10 +11,10 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 
-const styles = theme => ({
+const styles = (theme) => ({
   margin: {
-    margin: theme.spacing.unit
-  }
+    margin: theme.spacing.unit,
+  },
 });
 
 class Form extends React.Component {
@@ -50,7 +51,7 @@ class Form extends React.Component {
               <InputAdornment position="start">
                 <AccountCircle />
               </InputAdornment>
-            )
+            ),
           }}
         />
         <div className="">
@@ -67,7 +68,7 @@ class Form extends React.Component {
                     <InputAdornment position="start">
                       <PhoneIcon />
                     </InputAdornment>
-                  )
+                  ),
                 }}
               />
             </Grid>
@@ -85,7 +86,7 @@ class Form extends React.Component {
                     <InputAdornment position="start">
                       <EmailIcon />
                     </InputAdornment>
-                  )
+                  ),
                 }}
               />
             </Grid>
@@ -103,7 +104,7 @@ class Form extends React.Component {
                     <InputAdornment position="start">
                       <AccountCircle />
                     </InputAdornment>
-                  )
+                  ),
                 }}
               />
             </Grid>

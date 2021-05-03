@@ -1,3 +1,4 @@
+// noinspection JSUnusedGlobalSymbols
 import React from "react";
 import PropTypes from "prop-types";
 import deburr from "lodash/deburr";
@@ -8,26 +9,22 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
-import JsonData from "../../utils/countryCodes";
-import Db from "../../utils/db";
-
+import JsonData from "../services/countryCodes.json";
+import db from "../services/db";
 const suggestions = JsonData.countryCodes;
-const db = new Db();
-
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
-
   return (
     <TextField
       fullWidth
       InputProps={{
-        inputRef: node => {
+        inputRef: (node) => {
           ref(node);
           inputRef(node);
         },
         classes: {
-          input: classes.input
-        }
+          input: classes.input,
+        },
       }}
       {...other}
     />
@@ -37,7 +34,6 @@ function renderInputComponent(inputProps) {
 function renderSuggestion(suggestion, { query, isHighlighted }) {
   const matches = match(`${suggestion.name} (${suggestion.dial_code}) `, query);
   const parts = parse(`${suggestion.name} (${suggestion.dial_code}) `, matches);
-
   return (
     <MenuItem selected={isHighlighted} component="div">
       <div>
@@ -64,7 +60,7 @@ function getSuggestions(value) {
 
   return inputLength === 0
     ? []
-    : suggestions.filter(suggestion => {
+    : suggestions.filter((suggestion) => {
         const keep =
           count < 5 &&
           suggestion.name.slice(0, inputLength).toLowerCase() === inputValue;
@@ -77,73 +73,71 @@ function getSuggestions(value) {
       });
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    marginLeft: theme.spacing.unit * 2
+    marginLeft: theme.spacing.unit * 2,
   },
   autosuggest: {
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing.unit * 2,
   },
   container: {
-    position: "relative"
+    position: "relative",
   },
   suggestionsContainerOpen: {
     position: "absolute",
     zIndex: 1,
     marginTop: theme.spacing.unit,
     left: 0,
-    right: 0
+    right: 0,
   },
   suggestion: {
-    display: "block"
+    display: "block",
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: "none"
+    listStyleType: "none",
   },
   divider: {
-    height: theme.spacing.unit * 2
-  }
+    height: theme.spacing.unit * 2,
+  },
 });
 
 class IntegrationAutosuggest extends React.Component {
   state = {
     country: "",
     popper: "",
-    suggestions: []
+    suggestions: [],
   };
   constructor(props) {
     super(props);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
   }
   componentDidMount() {
-    db.get(["country"])
-      .then(res => {
+    db.get("country")
+      .then((res) => {
         this.setState({
-          country: `${res.country.name} (${res.country.dial_code})`
+          country: `${res.country.name} (${res.country.dial_code})`,
         });
       })
-      .catch(e => {
-        console.log(e);
-      });
+      .catch(() => {});
   }
 
   handleSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: getSuggestions(value),
     });
   };
 
   handleSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   };
 
-  handleChange = name => (event, { newValue }) => {
+  handleChange = (name) => (event, { newValue }) => {
     this.setState({
-      [name]: newValue
+      [name]: newValue,
     });
   };
   getSuggestionValue(suggestion) {
@@ -159,7 +153,7 @@ class IntegrationAutosuggest extends React.Component {
       onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested,
       onSuggestionsClearRequested: this.handleSuggestionsClearRequested,
       getSuggestionValue: this.getSuggestionValue,
-      renderSuggestion
+      renderSuggestion,
     };
 
     return (
@@ -171,15 +165,15 @@ class IntegrationAutosuggest extends React.Component {
             classes,
             placeholder: "Search a country",
             value: this.state.country,
-            onChange: this.handleChange("country")
+            onChange: this.handleChange("country"),
           }}
           theme={{
             container: classes.container,
             suggestionsContainerOpen: classes.suggestionsContainerOpen,
             suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion
+            suggestion: classes.suggestion,
           }}
-          renderSuggestionsContainer={options => (
+          renderSuggestionsContainer={(options) => (
             <Paper {...options.containerProps} square>
               {options.children}
             </Paper>
@@ -191,7 +185,7 @@ class IntegrationAutosuggest extends React.Component {
 }
 
 IntegrationAutosuggest.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(IntegrationAutosuggest);

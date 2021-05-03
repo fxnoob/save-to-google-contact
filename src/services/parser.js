@@ -1,9 +1,5 @@
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import * as addrs from "extract-data-from-text";
-import Db from "./db";
-
-const db = new Db();
-
 export default class Parser {
   constructor() {}
   async parse(string, opts) {
@@ -12,15 +8,14 @@ export default class Parser {
       if (obj1.length > 0) {
         resolve({
           type: 1,
-          data: obj1[0]
+          data: obj1[0],
         });
       }
       const obj2 = parsePhoneNumberFromString(string, opts.country.code);
       if (obj2) {
-        console.log(obj2);
         resolve({
           type: 2,
-          data: obj2.number
+          data: obj2.number,
         });
       }
       reject("NODATA");

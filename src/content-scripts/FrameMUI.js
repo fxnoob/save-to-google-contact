@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { create } from "jss";
 import { useTheme, jssPreset, StylesProvider } from "@material-ui/core/styles";
@@ -9,14 +10,14 @@ function FrameComponent(props) {
   const { children, ...other } = props;
   const theme = useTheme();
   const [state, setState] = React.useState({
-    ready: false
+    ready: false,
   });
   const instanceRef = React.useRef();
 
-  const handleRef = React.useCallback(ref => {
+  const handleRef = React.useCallback((ref) => {
     instanceRef.current = {
       contentDocument: ref ? ref.node.contentDocument : null,
-      contentWindow: ref ? ref.node.contentWindow : null
+      contentWindow: ref ? ref.node.contentWindow : null,
     };
   }, []);
 
@@ -25,11 +26,11 @@ function FrameComponent(props) {
       ready: true,
       jss: create({
         plugins: [...jssPreset().plugins, rtl()],
-        insertionPoint: instanceRef.current.contentWindow["demo-frame-jss"]
+        insertionPoint: instanceRef.current.contentWindow["demo-frame-jss"],
       }),
       sheetsManager: new Map(),
       container: instanceRef.current.contentDocument.body,
-      window: () => instanceRef.current.contentWindow
+      window: () => instanceRef.current.contentWindow,
     });
   };
 

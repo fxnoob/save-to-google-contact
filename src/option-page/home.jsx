@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -5,19 +6,19 @@ import Typography from "@material-ui/core/Typography";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import AutoSuggest from "./autosuggest";
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    width: "100%"
+    width: "100%",
   },
   div: {
-    padding: theme.spacing.unit * 2
-  }
+    padding: theme.spacing.unit * 2,
+  },
 });
 
 class Home extends React.Component {
   state = {
     switchStatus: true,
-    ExtStatus: ""
+    ExtStatus: "",
   };
   componentDidMount() {}
 

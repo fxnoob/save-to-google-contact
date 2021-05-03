@@ -1,17 +1,20 @@
 import "@babel/polyfill";
-import Db, { Schema } from "./utils/db";
+import db, { schema } from "./services/db";
 import Routes from "./routes";
-
-const routes = new Routes();
-const db = new Db();
-
-/*  init factory settings*/
-db.get(["isLoadedFirstTime"]).then(async res => {
-  if (!res.hasOwnProperty("isLoadedFirstTime")) {
-    const schema = new Schema();
-    await db.set({ isLoadedFirstTime: true, ...schema.data });
+class Main {
+  constructor() {
+    this.init();
   }
-});
-
-/* set background message listener for content script signals*/
-chrome.runtime.onMessage.addListener(routes.init);
+  init = async () => {
+    this.initDb();
+    await Routes();
+  };
+  initDb = async () => {
+    const res = await db.get("_loaded");
+    if (!res.hasOwnProperty("_loaded")) {
+      await db.set({ _loaded: true, ...schema.data });
+    }
+  };
+}
+// run
+new Main();
