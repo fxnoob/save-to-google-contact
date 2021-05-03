@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Bar = styled.div`
-  background: ${props => props.bg};
+  background: ${(props) => props.bg};
   border-radius: 3px;
   overflow: hidden;
   transition: 300ms;
@@ -15,7 +15,7 @@ export const Bar = styled.div`
 `;
 
 Bar.defaultProps = {
-  bg: "#fff"
+  bg: "#fff",
 };
 
 export const Button = styled.button`
@@ -32,7 +32,7 @@ export const Button = styled.button`
     transform: scale(1.15);
   }
   border: none;
-  background: ${props => props.bg};
+  background: ${(props) => props.bg};
 `;
 
 export const Main = styled.main`

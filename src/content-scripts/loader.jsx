@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Lottie from "lottie-react-web";
-import loader from "./loaderJson";
-import Done from "./done";
-import ConnectionErrorLoad from "./connection-error";
+import loader from "./loaderJson.json";
+import Done from "./done.json";
+import ConnectionErrorLoad from "./connection-error.json";
 
 export default class Loader extends React.Component {
   render() {
@@ -20,7 +21,7 @@ export default class Loader extends React.Component {
         <Lottie
           style={{ width: "300px", height: "270px" }}
           options={{
-            animationData: loaderJson
+            animationData: loaderJson,
           }}
         />
       </div>

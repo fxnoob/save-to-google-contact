@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
@@ -10,10 +11,10 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 
-const styles = theme => ({
+const styles = (theme) => ({
   margin: {
-    margin: theme.spacing.unit
-  }
+    margin: theme.spacing.unit,
+  },
 });
 
 class Form extends React.Component {
@@ -46,11 +47,11 @@ class Form extends React.Component {
           value={this.props.lastName}
           label="Last Name"
           InputProps={{
-            startAdornment: (
+            startAdornment: 
               <InputAdornment position="start">
                 <AccountCircle />
               </InputAdornment>
-            )
+            ,
           }}
         />
         <div className="">
@@ -63,11 +64,11 @@ class Form extends React.Component {
                 label="Phone"
                 value={this.props.phone}
                 InputProps={{
-                  startAdornment: (
+                  startAdornment: 
                     <InputAdornment position="start">
                       <PhoneIcon />
                     </InputAdornment>
-                  )
+                  ,
                 }}
               />
             </Grid>
@@ -81,11 +82,11 @@ class Form extends React.Component {
                 label="Email"
                 value={this.props.email}
                 InputProps={{
-                  startAdornment: (
+                  startAdornment: 
                     <InputAdornment position="start">
                       <EmailIcon />
                     </InputAdornment>
-                  )
+                  ,
                 }}
               />
             </Grid>
@@ -99,11 +100,11 @@ class Form extends React.Component {
                 value={this.props.desc}
                 label="Description"
                 InputProps={{
-                  startAdornment: (
+                  startAdornment: 
                     <InputAdornment position="start">
                       <AccountCircle />
                     </InputAdornment>
-                  )
+                  ,
                 }}
               />
             </Grid>

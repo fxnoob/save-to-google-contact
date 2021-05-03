@@ -9,12 +9,12 @@ test("test_type_1_and_2", async () => {
   const io = [
     {
       in: " ds test 33 @testuser.com ",
-      out: "test@testuser.com"
+      out: "test@testuser.com",
     },
     {
       in: " ds test 33 hg@testuser.com ",
-      out: "test@testuser.com"
-    }
+      out: "test@testuser.com",
+    },
   ];
   const res = await parser.parse(io[0].in, opts);
   expect(res).toEqual({ type: 2, data: "+9133" });
